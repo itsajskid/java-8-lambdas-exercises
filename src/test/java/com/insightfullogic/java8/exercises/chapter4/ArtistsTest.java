@@ -1,12 +1,12 @@
 package com.insightfullogic.java8.exercises.chapter4;
 
-import com.insightfullogic.java8.examples.chapter1.Artist;
-import com.insightfullogic.java8.examples.chapter1.SampleData;
+import java.util.Optional;
+
 import org.junit.Assert;
 import org.junit.Test;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNotNull;
+import com.insightfullogic.java8.examples.chapter1.Artist;
+import com.insightfullogic.java8.examples.chapter1.SampleData;
 
 public class ArtistsTest {
 
@@ -14,8 +14,8 @@ public class ArtistsTest {
 
     @Test
     public void indexWithinRange() {
-        Artist artist = optionalExamples.getArtist(0);
-        assertNotNull(artist);
+        Optional<Artist> artist = optionalExamples.getArtist(0);
+        Assert.assertNotNull(artist.get());
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -32,7 +32,7 @@ public class ArtistsTest {
     @Test
     public void nameIndexOutsideRange() {
         String artist = optionalExamples.getArtistName(4);
-        assertEquals("unknown", artist);
+        Assert.assertEquals("unknown", artist);
     }
 
 }
